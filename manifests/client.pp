@@ -1,7 +1,8 @@
-class motd::client($motd_message = '') {
-  include ibp::opt::bin
+class motd::client($message = '') {
   file{"/etc/motd":
-    content => generate("/opt/bin/motd_gen.sh", $::hostname, $motd_message),
-    owner => root, group => 0, mode => 0644;
+    content => generate("/usr/local/bin/motd_gen.sh", $::hostname, $message),
+    owner   => root,
+    group   => 0,
+    mode    => '0644';
   }
 }
